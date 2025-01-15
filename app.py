@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
+import os
 from datetime import datetime
 
 app = Flask(__name__)
@@ -7,7 +8,16 @@ app.secret_key = 'your_secret_key'  # Replace with your own secret key
 
 # Database connection function
 def get_db_connection():
-    conn = sqlite3.connect('instance/database.db')  # Ensure the path to your database is correct
+    # Construct the absolute path for the database
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(base_dir, 'instance', 'database.db')
+
+    # Ensure the instance directory exists
+    if not os.path.exists(os.path.dirname(db_path)):
+        os.makedirs(os.path.dirname(db_path))
+
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -39,25 +49,39 @@ def contact():
 @app.route('/order', methods=['GET', 'POST'])
 def order():
     if request.method == 'POST':
-        name = request.form['firstName'] + " " + request.form['middleName'] + " " + request.form['lastName']
+        # Capture form data
+        first_name = request.form['firstName']
+        middle_name = request.form['middleName']
+        last_name = request.form['lastName']
+        name = f"{first_name} {middle_name} {last_name}"
         contact_number = request.form['contactNumber']
         street = request.form['street']
         barangay = request.form['barangay']
         city = request.form['city']
+        province = request.form['province']
         quantity = request.form['quantity']
         delivery_date = request.form['deliveryDate']
         created_at = datetime.now()
 
-        conn = get_db_connection()
-        conn.execute('INSERT INTO "order" (name, contact_number, street_address, barangay, city_or_municipality, province, quantity, delivery_date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                     (name, contact_number, street, barangay, city, '', quantity, delivery_date, created_at))
-        conn.commit()
-        conn.close()
+        # Insert data into the database
+        try:
+            conn = get_db_connection()
+            conn.execute(
+                'INSERT INTO "order" (name, contact_number, street_address, barangay, city_or_municipality, province, quantity, delivery_date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                (name, contact_number, street, barangay, city, province, quantity, delivery_date, created_at)
+            )
+            conn.commit()
+            conn.close()
 
-        flash('Order successfully placed!', 'success')
-        return redirect(url_for('success'))
+            flash('Order successfully placed!', 'success')
+            return redirect(url_for('success'))
+        except sqlite3.Error as e:
+            flash(f'An error occurred: {e}', 'danger')
+            return redirect(url_for('index'))
 
-    return render_template('order.html')
+    return render_template('index.html')
+
+
 
 @app.route('/success')
 def success():
