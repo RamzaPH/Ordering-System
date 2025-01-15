@@ -1,0 +1,163 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Delivering System for Water Refilling Station</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheets" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <style>
+        .modal-backdrop.show {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" class="logo me-2" alt="Logo" width="40" height="40"/>                
+                <strong>ArAr Water Refilling Station</strong>
+            </a>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderModal">Order Now</button>
+        </div>
+    </nav>
+
+    <section class="hero-section bg-primary text-white text-center py-5" style="background: url('{{ url_for('static', filename='image/water_background.jpg') }}') no-repeat center center/cover;">
+        <div class="container">
+            <h1 class="fw-bold">Online Delivering System for Water Refilling Station</h1>
+            <p class="lead">Get fresh and clean water delivered to your doorstep with just a few clicks.</p>
+            <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#orderModal">Order Now</button>
+        </div>
+    </section>
+
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-truck fa-3x mb-3 text-primary"></i>
+                    <h3>Fast Delivery</h3>
+                    <p>We ensure quick and timely delivery of water to your location.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-tint fa-3x mb-3 text-primary"></i>
+                    <h3>Pure Water</h3>
+                    <p>Our water is purified and tested to meet the highest standards.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-mobile-alt fa-3x mb-3 text-primary"></i>
+                    <h3>Easy Ordering</h3>
+                    <p>Order water easily through our user-friendly online platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <!-- Left Section -->
+            <div class="col-md-6 text-center mb-4 mb-md-0">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Logo" class="img-fluid mb-3" width="100">
+                <h2 class="fw-bold">Online Scheduling System with SMS Notification</h2>
+                <div class="services mt-4">
+                    <h4>Services</h4>
+                    <p>Cash-on-Delivery or Online Payment Accepted</p>
+                    <img src="{{ url_for('static', filename='image/cod.png') }}" alt="COD Icon" class="img-fluid my-2" width="80">
+                    <p>Water Refilling: <strong>₱30</strong> (Price may vary)</p>
+                    <img src="{{ url_for('static', filename='image/refilling.png') }}" alt="Water Refilling Icon" class="refill-img my-2" width="150"/>
+                </div>
+            </div>
+
+            <!-- Right Section (Form) -->
+            <div class="col-md-6">
+                <div class="contact-form p-4 shadow rounded bg-light">
+                    <h3 class="mb-4 text-center">Contact Us</h3>
+                    <form action="{{ url_for('contact') }}" method="POST">
+                        <!-- Name Fields -->
+                        <div class="mb-3">
+                            <label class="form-label" for="firstName">Name</label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="First name" required type="text" name="firstName" aria-label="First name">
+                                <input class="form-control" placeholder="Middle name" required type="text" name="middleName" aria-label="Middle name">
+                                <input class="form-control" placeholder="Last name" required type="text" name="lastName" aria-label="Last name">
+                            </div>
+                        </div>
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" id="email" placeholder="Your Email" required type="email" name="email">
+                        </div>
+                        <!-- Message Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required name="message"></textarea>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Place Your Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for('order') }}" method="POST">
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="name">Name</label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="First name" required type="text" name="name" aria-label="First name">
+                                <input class="form-control" placeholder="Middle name" required type="text" name="middle_name" aria-label="Middle name">
+                                <input class="form-control" placeholder="Last name" required type="text" name="last_name" aria-label="Last name">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="contactNumber">Contact Number</label>
+                            <input type="text" class="form-control" id="contactNumber" placeholder="Enter your contact number" required name="contact_number">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="street_address">Delivery Address</label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="Street address" required type="text" name="street_address" aria-label="Street address">
+                                <input class="form-control" placeholder="Barangay or subdivision" required type="text" name="barangay" aria-label="Barangay or subdivision">
+                                <input class="form-control" placeholder="City or municipality, and province" required type="text" name="city_or_municipality" aria-label="City or municipality, and province">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="quantity">Quantity (in gallons)</label>
+                            <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" required name="quantity">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="deliveryDate">Preferred Delivery Date</label>
+                            <input type="date" class="form-control" id="deliveryDate" name="delivery_date">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Place Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 ArAr Water Refilling Station. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+</body>
+</html>

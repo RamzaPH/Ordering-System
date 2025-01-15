@@ -1,0 +1,295 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-navbar {
+    background-color: #008c91 !important;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    color: #fff !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.custom-navbar .navbar-brand img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.custom-navbar .btn {
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: #ffffff;
+    color: #008c91;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.custom-navbar .btn:hover {
+    background-color: #f1f1f1;
+    color: #59C1BD;
+}
+
+.hero-section {
+    color: white;
+    text-align: center;
+    position: relative;
+    padding: 5rem 0;
+    background: url('./image/tubig_background.jpg') no-repeat center center/cover;
+    background-size: cover;
+    background-position: center;
+    margin-top: 70px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-section h1, .hero-section p, .hero-section .btn {
+    position: relative;
+    z-index: 2;
+}
+
+.features-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.features-section .feature {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.features-section .feature i {
+    font-size: 3rem;
+    color: #59C1BD;
+    margin-bottom: 15px;
+}
+
+.features-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.features-section p {
+    color: #555;
+}
+
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.img-fluid {
+    width: 100px;
+    height: auto;
+}
+
+.refill-img {
+    width: 100px;
+    height: auto;
+}
+
+.services {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.services h4 {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.services p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.services img {
+    width: 80px;
+    height: auto;
+    margin: 10px auto;
+}
+
+.contact-form {
+    background-color: #f8f9fa;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.contact-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-form .form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact-form .btn {
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: #59C1BD;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn:hover {
+    background-color: #45A49B;
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input, textarea {
+    border-radius: 5px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal .btn-close {
+    background-color: transparent;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.services h4 {
+    font-weight: 700;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.order-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.order-form h2 {
+    margin-bottom: 20px;
+}
+
+.order-form .form-group {
+    margin-bottom: 15px;
+}
+
+.order-form .btn-primary {
+    width: 100%;
+}
+
+.order-form {
+    padding: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.order-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.order-form input[type="text"], 
+.order-form input[type="number"],
+.order-form input[type="date"] {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.order-form button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #59C1BD;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.order-form button:hover {
+    background-color: #45A49B;
+}
+
+@media (max-width: 768px) {
+    .navbar .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .features-section {
+        padding: 30px 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services h4 {
+        font-size: 1.2rem;
+        width: 90%;
+    }
+}
