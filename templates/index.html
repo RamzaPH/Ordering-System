@@ -114,24 +114,32 @@
                 <div class="modal-body">
                     <form action="{{ url_for('order') }}" method="POST">
                         <div class="form-group mb-3">
-                            <label class="form-label" for="name">Name</label>
+                            <label class="form-label" for="firstName">Name</label>
                             <div class="input-group">
-                                <input class="form-control" placeholder="First name" required type="text" name="name" aria-label="First name">
-                                <input class="form-control" placeholder="Middle name" required type="text" name="middle_name" aria-label="Middle name">
-                                <input class="form-control" placeholder="Last name" required type="text" name="last_name" aria-label="Last name">
+                                <input class="form-control" placeholder="First name" required type="text" name="firstName" aria-label="First name">
+                                <input class="form-control" placeholder="Middle name" required type="text" name="middleName" aria-label="Middle name">
+                                <input class="form-control" placeholder="Last name" required type="text" name="lastName" aria-label="Last name">
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <label for="contactNumber">Contact Number</label>
-                            <input type="text" class="form-control" id="contactNumber" placeholder="Enter your contact number" required name="contact_number">
+                            <input type="text" class="form-control" id="contactNumber" placeholder="Enter your contact number" required name="contactNumber">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="street_address">Delivery Address</label>
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Street address" required type="text" name="street_address" aria-label="Street address">
-                                <input class="form-control" placeholder="Barangay or subdivision" required type="text" name="barangay" aria-label="Barangay or subdivision">
-                                <input class="form-control" placeholder="City or municipality, and province" required type="text" name="city_or_municipality" aria-label="City or municipality, and province">
-                            </div>
+                            <label for="street">Street Address</label>
+                            <input type="text" class="form-control" id="street" placeholder="Enter street address" required name="street">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="barangay">Barangay</label>
+                            <input type="text" class="form-control" id="barangay" placeholder="Enter barangay" required name="barangay">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="city">City/Municipality</label>
+                            <input type="text" class="form-control" id="city" placeholder="Enter city or municipality" required name="city">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="province">Province</label>
+                            <input type="text" class="form-control" id="province" placeholder="Enter province" required name="province">
                         </div>
                         <div class="form-group mb-3">
                             <label for="quantity">Quantity (in gallons)</label>
@@ -139,7 +147,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="deliveryDate">Preferred Delivery Date</label>
-                            <input type="date" class="form-control" id="deliveryDate" name="delivery_date">
+                            <input type="date" class="form-control" id="deliveryDate" name="deliveryDate">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
